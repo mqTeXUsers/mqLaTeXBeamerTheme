@@ -45,6 +45,7 @@
 \RequirePackage{pgfopts}
 \RequirePackage{tikz}
 \RequirePackage{background}
+\RequirePackage{adjustbox}
 %    \end{macrocode}
 %
 %
@@ -103,12 +104,43 @@
 % space on the title slide.
 %    \begin{macrocode}
 
+% from https://tex.stackexchange.com/a/344684/13520
 \setbeamertemplate{title page}{
-  \begin{tikzpicture}
-    \fill[color=mqSand] (0,0) rectangle (0.5*\the\paperwidth, \the\paperheight);
-  \end{tikzpicture}
+  \nointerlineskip
+  \begin{adjustbox}{width=\paperwidth,center}
+    \begin{tikzpicture}
+% needed to set boundaries correctly, or background breaks
+      \useasboundingbox (0,0) rectangle (\paperwidth,\paperheight);
+      \fill[color=mqSand] (0,0) rectangle (\paperwidth, \paperheight);
+  %    \hskip-10pt
+  %    \node[inner sep=0pt] (logo) at (2.2, 1.2) {\usebeamertemplate*{logo titlepage}};
+  %    \node[inner sep=0pt] (logo) at (6.4, 1.4) {\usebeamertemplate*{affiliationlogo titlepage}};
 
-%  \usebackgroundtemplate{\includegraphics[width=\paperwidth]{example-image-a}}
+% position text
+      \node[text width=0.8\paperwidth,right] at (4,3) {
+        \begin{beamercolorbox}[wd=8cm]{title page header}
+        \usebeamerfont{title}\usebeamercolor{title}\inserttitle%
+        \end{beamercolorbox}%
+      };
+      \node[text width=0.2\paperwidth,right] at (1,0.7) {
+        \begin{beamercolorbox}{date}
+          \usebeamerfont{date}\insertdate%
+        \end{beamercolorbox}
+      };
+      \node[text width=0.8\paperwidth,right] at (4,0.7) {
+        \begin{beamercolorbox}{author}
+          \usebeamerfont{author}\insertauthor%
+        \end{beamercolorbox}
+      };
+% position branding
+      \node[inner sep=0, outer sep=0, anchor=south west] at (0,0) {
+        \includegraphics[width=0.4\paperwidth]{branding/fourTenths.png}
+      };
+      \node[inner sep=0, outer sep=0, anchor=south west] at (0.4\paperwidth,0) {
+        \includegraphics[width=0.6\paperwidth]{branding/sixTenths.png}
+      };
+    \end{tikzpicture}
+
 %  \begin{minipage}[b][\paperheight]{\textwidth}
 %    \vspace*{10mm}
 %
@@ -131,8 +163,9 @@
 %    \ifx\inserttitlegraphic\@empty\else\usebeamertemplate*{title graphic}\fi
 %    \vfill
 %    \vspace*{1mm}
-%  \end{minipage}}
+%  \end{minipage}
 %
+  \end{adjustbox}
 }
 %    \end{macrocode}
 % \end{macro}%

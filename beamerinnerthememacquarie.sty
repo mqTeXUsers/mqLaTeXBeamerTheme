@@ -24,6 +24,7 @@
 \RequirePackage{pgfopts}
 \RequirePackage{tikz}
 \RequirePackage{background}
+\RequirePackage{adjustbox}
 \pgfkeys{
   /macquarie/inner/sectionpage/.cd,
     .is choice,
@@ -50,9 +51,37 @@
 }
 
 \setbeamertemplate{title page}{
-  \begin{tikzpicture}
-    \fill[color=mqSand] (0,0) rectangle (0.5*\the\paperwidth, \the\paperheight);
-  \end{tikzpicture}
+  \nointerlineskip
+  \begin{adjustbox}{width=\paperwidth,center}
+    \begin{tikzpicture}
+      \useasboundingbox (0,0) rectangle (\paperwidth,\paperheight);
+      \fill[color=mqSand] (0,0) rectangle (\paperwidth, \paperheight);
+  %    \hskip-10pt
+  %    \node[inner sep=0pt] (logo) at (2.2, 1.2) {\usebeamertemplate*{logo titlepage}};
+  %    \node[inner sep=0pt] (logo) at (6.4, 1.4) {\usebeamertemplate*{affiliationlogo titlepage}};
+
+      \node[text width=0.8\paperwidth,right] at (4,3) {
+        \begin{beamercolorbox}[wd=8cm]{title page header}
+        \usebeamerfont{title}\usebeamercolor{title}\inserttitle%
+        \end{beamercolorbox}%
+      };
+      \node[text width=0.2\paperwidth,right] at (1,0.7) {
+        \begin{beamercolorbox}{date}
+          \usebeamerfont{date}\insertdate%
+        \end{beamercolorbox}
+      };
+      \node[text width=0.8\paperwidth,right] at (4,0.7) {
+        \begin{beamercolorbox}{author}
+          \usebeamerfont{author}\insertauthor%
+        \end{beamercolorbox}
+      };
+      \node[inner sep=0, outer sep=0, anchor=south west] at (0,0) {
+        \includegraphics[width=0.4\paperwidth]{branding/fourTenths.png}
+      };
+      \node[inner sep=0, outer sep=0, anchor=south west] at (0.4\paperwidth,0) {
+        \includegraphics[width=0.6\paperwidth]{branding/sixTenths.png}
+      };
+    \end{tikzpicture}
 
 %%    \end{macrocode}
 %%
@@ -63,6 +92,7 @@
 %% Stack Exchange question}.
 %%
 %%    \begin{macrocode}
+  \end{adjustbox}
 }
 \def\maketitle{%
 
