@@ -38,6 +38,6 @@
 
 # Output
 
-*.sty
-doc/macquarietheme.pdf
-demo/demo.pdf
+#*.sty
+#doc/macquarietheme.pdf
+#demo/demo.pdf
