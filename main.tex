@@ -3,30 +3,29 @@
 
 % Slide Masters:
 
-%	Title
-%	Text
-%	2 column
-%	Full-image
-%	Non-branded
-%	Bibliography
-%	Closing
-
-\documentclass[aspectratio=169]{beamer} % Aspect ratio
+% Title
+% Text
+% 2 column
+% Full-image
+% Bibliography
+% Closing
+\PassOptionsToPackage{table}{xcolor}    % https://tex.stackexchange.com/a/5365/5483
+\documentclass[aspectratio=169, 12pt]{beamer} % Aspect ratio
 % https://tex.stackexchange.com/a/14339/5483 
 % Possible values: 1610, 169, 149, 54, 43 and 32.
 % 169 = 16:9
 
 \usetheme{macquarie}
 
-\usepackage[english]{babel}				% Set language
-\usepackage[utf8x]{inputenc}			% Set encoding
-
-\mode<presentation>						% Set options
+\usepackage[english]{babel}       % Set language
+\usepackage[utf8x]{inputenc}      % Set encoding
+\usepackage{colortbl}
+\mode<presentation>           % Set options
 {
-  \usetheme{default}					% Set theme
-  \usecolortheme{default} 				% Set colors
-  \usefonttheme{default}  				% Set font theme
-  \setbeamertemplate{caption}[numbered]	% Set caption to be numbered
+  \usetheme{default}          % Set theme
+  \usecolortheme{default}         % Set colors
+  \usefonttheme{default}          % Set font theme
+  \setbeamertemplate{caption}[numbered] % Set caption to be numbered
 }
 
 % Uncomment this to have the outline at the beginning of each section highlighted.
@@ -37,24 +36,28 @@
 %  \end{frame}
 %}
 
-\usepackage{graphicx}					% For including figures
-\usepackage{booktabs}					% For table rules
-\usepackage{hyperref}					% For cross-referencing
+\usepackage{graphicx}         % For including figures
+\usepackage{booktabs}         % For table rules
+\usepackage{hyperref}         % For cross-referencing
 
-\title{Title for a minimal beamer presentation}	% Presentation title
-\author{Author One}								% Presentation author
-\institute{Name of institution}					% Author affiliation
-\date{\today}									% Today's date	
 
+\setbeamertemplate{footline}[frame number] 
+
+\title{Title for a minimal beamer presentation} % Presentation title
+\author{Author One}               % Presentation author
+\institute{Name of department/affiliation}         % Author affiliation
+\date{\today\\
+Here is some extra text to test length of line. Maybe presentation url here?}                 % Today's date  
 \begin{document}
 
 % Title page
 % This page includes the informations defined earlier including title, author/s, affiliation/s and the date
-\begin{frame}
-  \titlepage
+% \begin{frame}[noframenumbering]
+
+\maketitle
 
   
-\end{frame}
+% \end{frame}
 
 % Outline
 % This page includes the outline (Table of content) of the presentation. All sections and subsections will appear in the outline by default.
@@ -66,56 +69,69 @@
 % The slide structure is as follows:
 %
 %\begin{frame}{<slide-title>}
-%	<content>
+% <content>
 %\end{frame}
 
-\section{Section One}
+\section{Section One\\Where the section title keeps going and going and going and going.}
 
 \begin{frame}{Slide with bullet points}
-	This is a bullet list of two points:
+  This is a bullet list of two points:
     \begin{itemize}
-		\item Point one
+    \item Point one
         \item Point two
-	\end{itemize}
+  \end{itemize}
 \end{frame}
 
 \begin{frame}{Slide with two columns}
-	\begin{columns}
-		\column{.5\textwidth}
+  \begin{columns}
+    \column{.5\textwidth}
         Text goes in first column.
         
         \column{.5\textwidth}
         Text goes in second column
-	\end{columns}
+  \end{columns}
 \end{frame}
 
 \section{Section Two}
 
 \begin{frame}{Slide with table}
-	\input{tables/table1.tex}
+  \input{tables/table1.tex}
+\end{frame}
+
+\begin{frame}{Slide with different table}
+  \input{tables/table2.tex}
 \end{frame}
 
 \begin{frame}{Slide with figure}
-	\begin{figure}[H]
-		\centering
-        \includegraphics[width=.5\textwidth]{demo/logo.eps}
-        \caption{Caption for figure one.}
+  \begin{figure}[H]
+    \centering
+        \includegraphics[height=.7\textheight]{branding/MQ_INT_VER_RGB_POS.pdf}
+        \caption{Caption for figure one. MQ logo vertical.}
         \label{fig:figure1}
-	\end{figure}
+  \end{figure}
 \end{frame}
 
 \begin{frame}{Slide with references}
-	This is to reference a figure (Figure \ref{fig:figure1})\\
+  This is to reference a figure (Figure \ref{fig:figure1})\\
     This it to reference a table (Table \ref{tab:table1})\\
-    This is to cite an article \cite{Ahmed2018a}\\
-    This is to add an article to the references without mentioning in the text \nocite{Ahmed2018a}\\
+    This is to cite an article \cite{Sobotkova2015-lq, Nosek2018-yv}\\
+    This is to add an article to the references without mentioning in the text \nocite{Borgman2015-rh, Center_for_Open_Science2018-pn}\\
 \end{frame}
 \section{References}
 
 % Adding the option 'allowframebreaks' allows the contents of the slide to be expanded in more than one slide.
+% The "1" comes from the outer theme"
 \begin{frame}[allowframebreaks]{References}
-	\tiny\bibliography{references}
-	\bibliographystyle{apalike}
+  \tiny
+  \bibliography{references}
+  \bibliographystyle{apalike}
 \end{frame}
+
+
+\begin{frame}[standout]
+Thank you!
+\end{frame}
+
+
 
 \end{document}

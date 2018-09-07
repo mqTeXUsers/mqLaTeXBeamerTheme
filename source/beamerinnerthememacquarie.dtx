@@ -117,27 +117,35 @@
   %    \node[inner sep=0pt] (logo) at (6.4, 1.4) {\usebeamertemplate*{affiliationlogo titlepage}};
 
 % position text
-      \node[text width=0.8\paperwidth,right] at (4,3) {
-        \begin{beamercolorbox}[wd=8cm]{title page header}
+      \node[text width=0.8\paperwidth,right, anchor=north west] at (0.5cm,7.5cm) {
+        \begin{beamercolorbox}[wd=\textwidth]{title page header}
         \usebeamerfont{title}\usebeamercolor{title}\inserttitle%
         \end{beamercolorbox}%
       };
-      \node[text width=0.2\paperwidth,right] at (1,0.7) {
-        \begin{beamercolorbox}{date}
-          \usebeamerfont{date}\insertdate%
-        \end{beamercolorbox}
-      };
-      \node[text width=0.8\paperwidth,right] at (4,0.7) {
-        \begin{beamercolorbox}{author}
+      \node[text width=0.8\paperwidth,right, anchor=north west] at (0.5,6.8cm) {
+        \begin{beamercolorbox}[wd=\textwidth]{author}
           \usebeamerfont{author}\insertauthor%
         \end{beamercolorbox}
       };
-% position branding
-      \node[inner sep=0, outer sep=0, anchor=south west] at (0,0) {
-        \includegraphics[width=0.4\paperwidth]{branding/fourTenths.png}
+      \node[text width=0.8\paperwidth,right, anchor=north west] at (0.5,6cm) {
+        \begin{beamercolorbox}[wd=\textwidth]{date}
+          \usebeamerfont{date}\insertdate%
+        \end{beamercolorbox}
       };
-      \node[inner sep=0, outer sep=0, anchor=south west] at (0.4\paperwidth,0) {
-        \includegraphics[width=0.6\paperwidth]{branding/sixTenths.png}
+      \node[text width=0.8\paperwidth,right, anchor=north west] at (0.5,6.35cm) {
+        \begin{beamercolorbox}[wd=\textwidth]{institute}
+          \usebeamerfont{institute}\insertinstitute%
+        \end{beamercolorbox}
+      };
+% position branding
+      % \node[inner sep=0, outer sep=0, anchor=south west] at (0,0) {
+      %   \includegraphics[width=0.4\paperwidth]{branding/fourTenths.png}
+      % };
+      \node[inner sep=0, outer sep=0, anchor=north west] at (0.7\paperwidth,9) {
+        \includegraphics[width=0.3\paperwidth]{branding/MQ_INT_HOR_RGB_POS.pdf}
+      };
+      \node[inner sep=0, outer sep=0, anchor=south west] at (-1,-2) {
+        \includegraphics[width=1.1\paperwidth]{branding/sixTenths.png}
       };
     \end{tikzpicture}
 
@@ -296,21 +304,100 @@
 %   Template for the section title slide at the beginning of each section.
 %
 %    \begin{macrocode}
-\defbeamertemplate{section page}{simple}{
-  \begin{center}
-    \usebeamercolor[fg]{section title}
-    \usebeamerfont{section title}
-    \insertsectionhead\par
-    \ifx\insertsubsectionhead\@empty\else
-      \usebeamercolor[fg]{subsection title}
-      \usebeamerfont{subsection title}
-      \insertsubsectionhead
-    \fi
-  \end{center}
-}
 \defbeamertemplate{section page}{progressbar}{
+
+ \nointerlineskip
+  \begin{adjustbox}{width=\paperwidth,center}
+    \begin{tikzpicture}
+
+      \useasboundingbox (0,0) rectangle (\paperwidth,\paperheight);
+      \fill[color=mqSand] (0,0) rectangle (\paperwidth, \paperheight);
+
+% position text
+      \node[text width=0.6\textwidth,right, anchor=north west] at (0.5\textwidth,5cm) {
+        \begin{beamercolorbox}[wd=\textwidth]{title page header}
+           \usebeamercolor[fg]{section title}%
+            \usebeamerfont{section title}%
+            \insertsectionhead\par
+            \ifx\insertsubsectionhead\@empty\else
+              \usebeamercolor[fg]{subsection title}%
+              \usebeamerfont{subsection title}%
+              \insertsubsectionhead
+            \fi
+        \end{beamercolorbox}%
+      };
+      % \node[text width=0.2\paperwidth,right, anchor=north west] at (1,5.5cm) {
+      %   \begin{beamercolorbox}[wd=\textwidth]{date}
+      %     \usebeamerfont{date}\insertdate%
+      %   \end{beamercolorbox}
+      % };
+      % \node[text width=0.8\paperwidth,right, anchor=north west] at (1,7.25cm) {
+      %   \begin{beamercolorbox}[wd=\textwidth]{author}
+      %     \usebeamerfont{author}\insertauthor%
+      %   \end{beamercolorbox}
+      % };
+      % \node[text width=0.8\paperwidth,right, anchor=north west] at (1,6.75cm) {
+      %   \begin{beamercolorbox}[wd=\textwidth]{institute}
+      %     \usebeamerfont{institute}\insertinstitute%
+      %   \end{beamercolorbox}
+      % };
+% position branding
+      % \node[inner sep=0, outer sep=0, anchor=south west] at (0,0) {
+      %   \includegraphics[width=0.4\paperwidth]{branding/fourTenths.png}
+      % };
+      \node[inner sep=0, outer sep=0, anchor=north west] at (0.7\paperwidth,9) {
+        \includegraphics[width=0.3\paperwidth]{branding/MQ_INT_HOR_RGB_POS.pdf}
+      };
+      \node[inner sep=0, outer sep=0, anchor=south west] at (-0.25,-0.25) {
+        \includegraphics[height=1.05\paperheight]{branding/SideTransparent.png}
+      };
+    \end{tikzpicture}
+
+%  \begin{minipage}[b][\paperheight]{\textwidth}
+%    \vspace*{10mm}
+%
+%    \ifx\inserttitle\@empty\else\usebeamertemplate*{title}\fi
+%    \ifx\insertsubtitle\@empty\else\usebeamertemplate*{subtitle}\fi
+%    \usebeamertemplate*{title separator}
+%%    \end{macrocode}
+%%
+%% Beamer's definition of |\insertauthor| is always nonempty, so we have
+%% to test another macro initialized by |\author{...}| to see if the user has
+%% defined an author. This solution was suggested by Enrico Gregorio in an
+%% answer to \href{https://tex.stackexchange.com/questions/241306/}{this
+%% Stack Exchange question}.
+%%
+%%    \begin{macrocode}
+%    \ifx\beamer@shortauthor\@empty\else\usebeamertemplate*{author}\fi
+%    \ifx\insertdate\@empty\else\usebeamertemplate*{date}\fi
+%    \ifx\insertinstitute\@empty\else\usebeamertemplate*{institute}\fi
+%    \vfill
+%    \ifx\inserttitlegraphic\@empty\else\usebeamertemplate*{title graphic}\fi
+%    \vfill
+%    \vspace*{1mm}
+%  \end{minipage}
+%
+  \end{adjustbox}
+
+  % \begin{center}
+  %         
+
+  %   \usebeamercolor[fg]{section title}
+  %   \usebeamerfont{section title}
+  %   \insertsectionhead\par
+  %   \ifx\insertsubsectionhead\@empty\else
+  %     \usebeamercolor[fg]{subsection title}
+  %     \usebeamerfont{subsection title}
+  %     \insertsubsectionhead
+  %   \fi
+  % \end{center}
+}
+
+
+\defbeamertemplate{section page}{simple}{
   \centering
   \begin{minipage}{22em}
+  
     \raggedright
     \usebeamercolor[fg]{section title}
     \usebeamerfont{section title}
@@ -431,6 +518,8 @@
 \newcommand{\macquarie@block}[1]{
   \par\vskip\medskipamount%
   \setlength{\parskip}{0pt}
+
+  
 %    \end{macrocode}
 %
 %    If a background color is defined for the block title or body, we need to
@@ -480,6 +569,7 @@
 %
 %   \begin{macrocode}
       \usebeamerfont*{block title#1}%
+
       \macquarie@strut%
       \insertblocktitle%
       \macquarie@strut%
@@ -495,6 +585,7 @@
     \begin{beamercolorbox}[vmode]{block body#1}}{
   \ifbeamercolorempty[bg]{block body}{%
     \begin{beamercolorbox}[vmode]{block body#1}%
+
   }{%
     \begin{beamercolorbox}[sep=\macquarie@blocksep, vmode]{block body#1}%
     \vspace{-\macquarie@parskip}
@@ -589,7 +680,7 @@
   \booltrue{macquarie@standout}
   \begingroup
     \setkeys{beamerframe}{c}
-    \setkeys{beamerframe}{noframenumbering}
+    % \setkeys{beamerframe}{noframenumbering}
     \ifbeamercolorempty[bg]{palette primary}{
       \setbeamercolor{background canvas}{
         use=palette primary,

@@ -89,21 +89,41 @@
 }
 \defbeamertemplate{frametitle}{plain}{%
   \nointerlineskip%
-  \begin{beamercolorbox}[%
-      wd=\paperwidth,%
-      sep=0pt,%
-      leftskip=\macquarie@frametitle@padding,%
-      rightskip=\macquarie@frametitle@padding,%
-    ]{frametitle}%
-  \macquarie@frametitlestrut@start%
-  \insertframetitle%
-  \nolinebreak%
-  \macquarie@frametitlestrut@end%
-  \end{beamercolorbox}%
+  \begin{adjustbox}{width=\paperwidth,center}
+    \begin{tikzpicture}
+      \useasboundingbox (0,0) rectangle (\paperwidth,.11\paperheight);
+      \fill[color=mqSand] (0,0) rectangle (\paperwidth, .11\paperheight);
+        \node[text width=0.8\paperwidth,right, anchor=north west] at (0.5,0.825) {%
+         \insertframetitle%
+        };
+           \node[inner sep=0, outer sep=0, anchor=north west] at (0.8\paperwidth,1.1) {
+        \includegraphics[width=0.2\paperwidth]{branding/MQ_MAS_HOR_RGB_POS.pdf}
+    };
+
+    \end{tikzpicture}
+  \end{adjustbox}
+
+  % \begin{beamercolorbox}[%
+  %     wd=\paperwidth,%
+  %     sep=0pt,%
+  %     leftskip=\macquarie@frametitle@padding,%
+  %     rightskip=\macquarie@frametitle@padding,%
+  %   ]{frametitle}%
+  % %   \nointerlineskip
+  % \begin{tikzpicture}
+  % %
+
+  % %\macquarie@frametitlestrut@start%
+  % \end{tikzpicture}
+
+  % \nolinebreak%
+  % %\macquarie@frametitlestrut@end%
+
+  % \end{beamercolorbox}%
 }
 \setbeamertemplate{frametitle continuation}{%
-  \usebeamerfont{frametitle}
-  \romannumeral \insertcontinuationcount
+  \usebeamerfont{frametitle}%
+\insertcontinuationcount
 }
 \newlength{\macquarie@progressinheadfoot}
 \newlength{\macquarie@progressinheadfoot@linewidth}

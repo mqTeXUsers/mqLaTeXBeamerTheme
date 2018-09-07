@@ -12,24 +12,19 @@
 % \definecolor{mqWhite}{HTML}{FFFFFF}
 \begin{table}[H]
 \centering
-
-%\rowcolors{1}{mqSand}{mqSand!50}
-\newcolumntype{a}{>{\columncolor{mqPurple}}l}
-\newcolumntype{b}{>{\columncolor{mqSand}}c}
-
-\begin{tabular}{abb}
-
-\rowcolor{mqCharcoal}
-\multicolumn{3}{l}{\textcolor{white}{\textbf{Caption for table one}}}\\
-
-\rowcolor{mqBrightRed} 
+\caption{Caption for table one}
+\label{tab:table1}
+\rowcolors{1}{mqSand}{mqSand!50}
+\begin{tabular}{@{}lcc@{}}
+\rowcolor{mqBrightRed}
 
 \textcolor{white}{\textbf{Heading 1}} & \textcolor{white}{\textbf{Heading 2}} & \textcolor{white}{\textbf{Heading 3}} \\ 
-\textcolor{white}{Row 1} & 0.1 & .01 \\
-\textcolor{white}{Row 2} & 0.2 & .02 \\
-\textcolor{white}{Row 3} & 0.3 & 0.03 \\
-\textcolor{white}{Row 4} & 0.4 & 0.04 \\ 
-
+Row 1 & 0.1 & .01 \\
+Row 2 & 0.2 & .02 \\
+Row 3 & 0.3 & 0.03 \\
+Row 4 & 0.4 & 0.04 \\ 
+\rowcolor{mqDeepRed}
+asdf & qwer & asdf
 
 % \toprule
 % \textbf{Heading 1} & \textbf{Heading 2} & \textbf{Heading 3} \\ \midrule
